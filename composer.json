@@ -1,0 +1,42 @@
+{
+    "name": "mnastalski/przelewy24-laravel",
+    "description": "Przelewy24 Laravel library",
+    "keywords": [
+        "laravel",
+        "przelewy24",
+        "payments"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/mnastalski/przelewy24-laravel",
+    "authors": [
+        {
+            "name": "Mateusz Nastalski",
+            "homepage": "https://nastalski.pl"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/contracts": ">=9.0",
+        "illuminate/support": ">=9.0",
+        "mnastalski/przelewy24-php": "^1.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Przelewy24\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Przelewy24\\Providers\\Przelewy24ServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
