@@ -127,12 +127,12 @@ class MyController
                 $order->id,
                 $order->amount,
             );
+
+            $order->status = 'paid';
+            $order->save();
         } catch (Przelewy24Exception) {
             // Handle error ...
         }
-
-        $order->status = 'paid';
-        $order->save();
 
         return response()->noContent();
     }
