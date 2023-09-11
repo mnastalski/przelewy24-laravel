@@ -97,10 +97,8 @@ class MyController
             $request->post()
         );
 
-        // Find the order by the order ID from the webhook
-        $order = Order::find(
-            $webhook->orderId()
-        );
+        // Find related order using webhook's session ID
+        $order = Order::firstWhere('payment_id', $webhook->sessionId());
 
         // If you would like to verify that the webhook and its
         // signature are legitimate, you may use the following method:
@@ -123,8 +121,8 @@ class MyController
         // Verify the transaction / claim the payment
         try {
             $this->przelewy24->transactions()->verify(
-                $webhook->sessionId(),
-                $order->id,
+                $order->payment_id,
+                $webhook->orderId(),
                 $order->amount,
             );
 
