@@ -71,6 +71,7 @@ class MyController
         );
 
         $order->payment_id = $register->token();
+        $order->save();
 
         // Redirect to Przelewy24's payment gateway
         return redirect(
