@@ -70,7 +70,7 @@ class MyController
             // ...
         );
 
-        $order->payment_id = $register->orderId();
+        $order->payment_id = $register->token();
 
         // Redirect to Przelewy24's payment gateway
         return redirect(
@@ -102,8 +102,8 @@ class MyController
             $webhook->orderId()
         );
 
-        // If you would like to verify that the webhook's and its
-        // signature are legitimate you may use the following method:
+        // If you would like to verify that the webhook and its
+        // signature are legitimate, you may use the following method:
         $isSignValid = $webhook->isSignValid(
             sessionId: $order->id,
             amount: $order->amount,
